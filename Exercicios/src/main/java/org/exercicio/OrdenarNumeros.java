@@ -37,20 +37,26 @@ public class OrdenarNumeros {
 
     public static void main(String[] args) {
 
-        // Ler os três números inteiros diferentes via JOptionPane
-        String num1Str = JOptionPane.showInputDialog(null, "Digite o primeiro número inteiro:");
-        int num1 = Integer.parseInt(num1Str);
+        try {
+            // Ler os três números inteiros diferentes via JOptionPane e faz tratamento de exceções durante a execução do programa
+            String num1Str = JOptionPane.showInputDialog(null, "Digite o primeiro número inteiro:");
+            int num1 = Integer.parseInt(num1Str);
 
-        String num2Str = JOptionPane.showInputDialog(null, "Digite o segundo número inteiro:");
-        int num2 = Integer.parseInt(num2Str);
+            String num2Str = JOptionPane.showInputDialog(null, "Digite o segundo número inteiro:");
+            int num2 = Integer.parseInt(num2Str);
 
-        String num3Str = JOptionPane.showInputDialog(null, "Digite o terceiro número inteiro:");
-        int num3 = Integer.parseInt(num3Str);
+            String num3Str = JOptionPane.showInputDialog(null, "Digite o terceiro número inteiro:");
+            int num3 = Integer.parseInt(num3Str);
 
-        // Ordenar os números
-        int[] numerosOrdenados = ordenarNumeros(num1, num2, num3);
+            // Ordenar os números
+            int[] numerosOrdenados = ordenarNumeros(num1, num2, num3);
 
-        // Exibir os números ordenados via JOptionPane
-        JOptionPane.showMessageDialog(null, String.format("Números ordenados em ordem crescente:\n%d\n%d\n%d", numerosOrdenados[0], numerosOrdenados[1], numerosOrdenados[2]));
+            // Exibir os números ordenados via JOptionPane
+            JOptionPane.showMessageDialog(null, String.format("Números ordenados em ordem crescente:\n%d\n%d\n%d", numerosOrdenados[0], numerosOrdenados[1], numerosOrdenados[2]));
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Programa encerrado pelo usuário."); // Captura exceção se o usuário cancelar a operação
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Valor inválido. Programa encerrado."); // Captura exceção se o usuário digitar um valor inválido
+        }
     }
 }

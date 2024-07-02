@@ -34,10 +34,15 @@ public class CalcularTabuada {
         char resposta; // Variável para armazenar a resposta do usuário
 
         do {
-            // Pergunta ao usuário se ele quer ver a tabuada via JOptionPane
-            resposta = JOptionPane.showInputDialog(null, "Você quer ver a tabuada? (s/n):").charAt(0); // Lê a primeira letra da resposta
+            try {
+                // Pergunta ao usuário se ele quer ver a tabuada e faz tratamento de exceções durante a execução do programa
+                resposta = JOptionPane.showInputDialog(null, "Você quer ver a tabuada? (s/n):").charAt(0); // Lê a primeira letra da resposta
 
-            if (resposta == 's' || resposta == 'S') {
+                // Se a resposta for 's' ou 'S', pede ao usuário para digitar um valor inteiro
+                if (resposta == 's' || resposta == 'S') {
+                    JOptionPane.showMessageDialog(null, "Programa encerrado pelo usuário.");
+                    return;
+                }
                 // Se a resposta for 's' ou 'S', pede ao usuário para digitar um valor inteiro
                 String valorStr = JOptionPane.showInputDialog(null, "Digite um valor inteiro (maior que 1 e menor que 11):");
                 int valor = Integer.parseInt(valorStr);
@@ -50,6 +55,12 @@ public class CalcularTabuada {
                     // Informa ao usuário que o valor está fora do intervalo permitido
                     JOptionPane.showMessageDialog(null, "Valor fora do intervalo permitido. Tente novamente.");
                 }
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(null, "Programa encerrado pelo usuário.");
+                return;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Valor inválido. Programa encerrado.");
+                return;
             }
 
         } while (resposta == 's' || resposta == 'S'); // Repete o processo enquanto a resposta for 's' ou 'S'

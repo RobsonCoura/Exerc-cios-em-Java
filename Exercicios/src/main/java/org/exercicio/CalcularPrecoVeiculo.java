@@ -21,18 +21,32 @@ public class CalcularPrecoVeiculo {
 
     public static void main(String[] args) {
 
-        // Ler os dados do veículo via JOptionPane
-        String modelo = JOptionPane.showInputDialog(null, "Digite o modelo do veículo:");
+        try {
+            // Ler os dados do veículo via JOptionPane e faz tratamento de exceções durante a execução do programa
+            String modelo = JOptionPane.showInputDialog(null, "Digite o modelo do veículo:");
 
-        String marca = JOptionPane.showInputDialog(null, "Digite a marca do veículo:");
+            String marca = JOptionPane.showInputDialog(null, "Digite a marca do veículo:");
 
-        String custoFabricacaoStr = JOptionPane.showInputDialog(null, "Digite o custo de fabricação do veículo:");
+            String custoFabricacaoStr = JOptionPane.showInputDialog(null, "Digite o custo de fabricação do veículo:");
 
-        double custoFabricacao = Double.parseDouble(custoFabricacaoStr);
-        // Calcular o preço de venda
-        double precoVenda = calculaPrecoVenda(custoFabricacao);
+            // Substituir vírgula por ponto, se necessário
+            custoFabricacaoStr = custoFabricacaoStr.replace(",", ".");
 
-        // Exibir os resultados
-        JOptionPane.showMessageDialog(null, String.format("Modelo: %s\nMarca: %s\nPreço de venda: R$ %.2f", modelo, marca, precoVenda));
+            // Converter para double
+            double custoFabricacao = Double.parseDouble(custoFabricacaoStr);
+
+            // Calcular o preço de vendaa
+            double precoVenda = calculaPrecoVenda(custoFabricacao);
+
+            // Formatar o preço de venda para três casas decimais
+            String precoVendaFormatado = String.format("%.3f", precoVenda);
+
+            // Exibir os resultados
+            JOptionPane.showMessageDialog(null, String.format("Modelo: %s\nMarca: %s\nPreço de venda: R$ %s", modelo, marca, precoVendaFormatado.replace(".", ",")));
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Programa encerrado pelo usuário.");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Valor inválido. Programa encerrado.");
+        }
     }
 }
