@@ -1,6 +1,6 @@
 package org.exercicio;
 
-import java.util.Scanner;
+import javax.swing.*;
 
 /*
 Este programa realiza os seguintes passos:
@@ -37,28 +37,20 @@ public class OrdenarNumeros {
 
     public static void main(String[] args) {
 
-        // Cria um objeto Scanner para ler a entrada do usuário
-        Scanner scanner = new Scanner(System.in);
+        // Ler os três números inteiros diferentes via JOptionPane
+        String num1Str = JOptionPane.showInputDialog(null, "Digite o primeiro número inteiro:");
+        int num1 = Integer.parseInt(num1Str);
 
-        // Ler os três números inteiros diferentes
-        System.out.print("Digite o primeiro número inteiro: ");
-        int num1 = scanner.nextInt();
+        String num2Str = JOptionPane.showInputDialog(null, "Digite o segundo número inteiro:");
+        int num2 = Integer.parseInt(num2Str);
 
-        System.out.print("Digite o segundo número inteiro: ");
-        int num2 = scanner.nextInt();
-
-        System.out.print("Digite o terceiro número inteiro: ");
-        int num3 = scanner.nextInt();
+        String num3Str = JOptionPane.showInputDialog(null, "Digite o terceiro número inteiro:");
+        int num3 = Integer.parseInt(num3Str);
 
         // Ordenar os números
         int[] numerosOrdenados = ordenarNumeros(num1, num2, num3);
 
-        // Exibir os números ordenados
-        System.out.println("Números ordenados em ordem crescente: ");
-        for (int num : numerosOrdenados) {
-            System.out.println(num);
-        }
-
-        scanner.close();
+        // Exibir os números ordenados via JOptionPane
+        JOptionPane.showMessageDialog(null, String.format("Números ordenados em ordem crescente:\n%d\n%d\n%d", numerosOrdenados[0], numerosOrdenados[1], numerosOrdenados[2]));
     }
 }

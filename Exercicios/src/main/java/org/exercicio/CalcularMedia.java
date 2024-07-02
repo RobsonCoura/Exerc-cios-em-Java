@@ -1,6 +1,6 @@
 package org.exercicio;
 
-import java.util.Scanner;
+import javax.swing.*;
 
 /*
 Este programa realiza os seguintes passos:
@@ -31,28 +31,33 @@ public class CalcularMedia {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        // Ler as notas e o número de faltas
-        System.out.print("Digite a nota da 1ª prova: ");
-        double notaP1 = scanner.nextDouble();
+        // Loop para continuar lendo novos alunos até que seja digitado "1" para nota da 1ª prova
+        while (true) {
+            // Entrada da nota da 1ª prova via JOptionPane
+            String notaP1Str = JOptionPane.showInputDialog(null, "Digite a nota da 1ª prova (ou '1' para sair):");
+            double notaP1 = Double.parseDouble(notaP1Str);
 
-        System.out.print("Digite a nota da 2ª prova: ");
-        double notaP2 = scanner.nextDouble();
+            // Se a nota da 1ª prova for 1, o programa encerra o loop
+            if (notaP1 == 1) {
+                break;
+            }
+            // Ler as notas e faltas do aluno via JOptionPane
+            String notaP2Str = JOptionPane.showInputDialog(null, "Digite a nota da 2ª prova:");
+            double notaP2 = Double.parseDouble(notaP2Str);
 
-        System.out.print("Digite o número de faltas: ");
-        int faltas = scanner.nextInt();
+            String faltasStr = JOptionPane.showInputDialog(null, "Digite o número de faltas:");
+            int faltas = Integer.parseInt(faltasStr);
 
-        // Calcular a média
-        double media = calculaMedia(notaP1, notaP2);
+            // Calcular a média do aluno
+            double media = calculaMedia(notaP1, notaP2);
 
-        // Determinar a situação do aluno
-        String situacao = calculaSituacao(media, faltas);
+            // Determinar a situação do aluno com base na média e no número de faltas
+            String situacao = calculaSituacao(media, faltas);
 
-        // Exibir os resultados
-        System.out.printf("Média: %.2f\n", media);
-        System.out.println("Situação: " + situacao);
+            // Exibição da média e da situação do aluno via JOptionPane
+            JOptionPane.showMessageDialog(null, String.format("Média: %.2f\nSituação: %s", media, situacao));
 
-        scanner.close();
+        }
     }
 }

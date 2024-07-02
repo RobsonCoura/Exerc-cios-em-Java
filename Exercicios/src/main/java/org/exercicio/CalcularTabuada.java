@@ -1,6 +1,6 @@
 package org.exercicio;
 
-import java.util.Scanner;
+import javax.swing.*;
 
 /*
 Este programa realiza os seguintes passos:
@@ -21,27 +21,26 @@ public class CalcularTabuada {
     // Método para calcular e exibir a tabuada de multiplicação
     public static void exibirTabuada(int numero) {
         // Exibe a tabuada de 1 a 10 para o número fornecido
-        System.out.println("Tabuada de " + numero + ":");
+        StringBuilder tabuada = new StringBuilder();
+        tabuada.append("Tabuada de ").append(numero).append(":\n");
         for (int i = 1; i <= 10; i++) {
-            System.out.println(numero + " x " + i + " = " + (numero * i));
+            tabuada.append(numero).append(" x ").append(i).append(" = ").append(numero * i).append("\n");
         }
+        JOptionPane.showMessageDialog(null, tabuada.toString());
     }
 
     public static void main(String[] args) {
 
-        // Cria um objeto Scanner para ler a entrada do usuário
-        Scanner scanner = new Scanner(System.in);
         char resposta; // Variável para armazenar a resposta do usuário
 
         do {
-            // Pergunta ao usuário se ele quer ver a tabuada
-            System.out.print("Você quer ver a tabuada? (s/n): ");
-            resposta = scanner.next().charAt(0); // Lê a primeira letra da resposta
+            // Pergunta ao usuário se ele quer ver a tabuada via JOptionPane
+            resposta = JOptionPane.showInputDialog(null, "Você quer ver a tabuada? (s/n):").charAt(0); // Lê a primeira letra da resposta
 
             if (resposta == 's' || resposta == 'S') {
                 // Se a resposta for 's' ou 'S', pede ao usuário para digitar um valor inteiro
-                System.out.print("Digite um valor inteiro (maior que 1 e menor que 11): ");
-                int valor = scanner.nextInt();
+                String valorStr = JOptionPane.showInputDialog(null, "Digite um valor inteiro (maior que 1 e menor que 11):");
+                int valor = Integer.parseInt(valorStr);
 
                 // Verifica se o valor está no intervalo permitido
                 if (valor > 1 && valor < 11) {
@@ -49,13 +48,10 @@ public class CalcularTabuada {
                     exibirTabuada(valor);
                 } else {
                     // Informa ao usuário que o valor está fora do intervalo permitido
-                    System.out.println("Valor fora do intervalo permitido. Tente novamente.");
+                    JOptionPane.showMessageDialog(null, "Valor fora do intervalo permitido. Tente novamente.");
                 }
             }
 
         } while (resposta == 's' || resposta == 'S'); // Repete o processo enquanto a resposta for 's' ou 'S'
-
-        // Fecha o scanner para liberar os recursos
-        scanner.close();
     }
 }

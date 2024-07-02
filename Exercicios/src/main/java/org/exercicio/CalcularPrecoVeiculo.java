@@ -1,6 +1,6 @@
 package org.exercicio;
 
-import java.util.Scanner;
+import javax.swing.*;
 
 /*
 Este programa realiza os seguintes passos:
@@ -14,32 +14,25 @@ Exibe o modelo, a marca e o preço de venda do veículo.
 
 public class CalcularPrecoVeiculo {
 
-    // Método para calcular o preço de venda do veículo
+    // Método para calcular o preço de venda do veículo com acréscimo de 30%
     public static double calculaPrecoVenda(double custoFabricacao) {
         return custoFabricacao * 1.30;
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        // Ler os dados do veículo
-        System.out.print("Digite o modelo do veículo: ");
-        String modelo = scanner.nextLine();
+        // Ler os dados do veículo via JOptionPane
+        String modelo = JOptionPane.showInputDialog(null, "Digite o modelo do veículo:");
 
-        System.out.print("Digite a marca do veículo: ");
-        String marca = scanner.nextLine();
+        String marca = JOptionPane.showInputDialog(null, "Digite a marca do veículo:");
 
-        System.out.print("Digite o custo de fabricação do veículo: ");
-        double custoFabricacao = scanner.nextDouble();
+        String custoFabricacaoStr = JOptionPane.showInputDialog(null, "Digite o custo de fabricação do veículo:");
 
+        double custoFabricacao = Double.parseDouble(custoFabricacaoStr);
         // Calcular o preço de venda
         double precoVenda = calculaPrecoVenda(custoFabricacao);
 
         // Exibir os resultados
-        System.out.println("Modelo: " + modelo);
-        System.out.println("Marca: " + marca);
-        System.out.printf("Preço de venda: R$ %.2f\n", precoVenda);
-
-        scanner.close();
+        JOptionPane.showMessageDialog(null, String.format("Modelo: %s\nMarca: %s\nPreço de venda: R$ %.2f", modelo, marca, precoVenda));
     }
 }
