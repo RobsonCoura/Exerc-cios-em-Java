@@ -38,11 +38,11 @@ public class CalcularPrecoVeiculo {
             // Calcular o preço de vendaa
             double precoVenda = calculaPrecoVenda(custoFabricacao);
 
-            // Formatar o preço de venda para três casas decimais
-            String precoVendaFormatado = String.format("%.3f", precoVenda);
+            // Formatar o preço de venda para duas casas decimais, no formato "R$ X,XXX.XX", onde X são dígitos numéricos
+            String precoVendaFormatado = String.format("R$ %,.2f", precoVenda);
 
             // Exibir os resultados
-            JOptionPane.showMessageDialog(null, String.format("Modelo: %s\nMarca: %s\nPreço de venda: R$ %s", modelo, marca, precoVendaFormatado.replace(".", ",")));
+            JOptionPane.showMessageDialog(null, String.format("Modelo: %s\nMarca: %s\nPreço de venda: %s", modelo, marca, precoVendaFormatado));
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Programa encerrado pelo usuário.");
         } catch (NumberFormatException e) {
