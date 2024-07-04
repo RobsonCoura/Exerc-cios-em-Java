@@ -15,7 +15,7 @@ O objetivo é oferecer práticas diversas para solidificar o entendimento desses
 
 ## 🛠 Tecnologias
 
-As seguintes tecnologias foram utilizadas no desenvolvimento da API Rest do projeto:
+As seguintes tecnologias foram utilizadas no desenvolvimento do projeto:
 
 ### Back-End
 - **[Java 11](https://www.oracle.com/java)**
@@ -30,7 +30,7 @@ As seguintes tecnologias foram utilizadas no desenvolvimento da API Rest do proj
 1. Faça um programa para ler (no programa principal): nota da 1ª prova, nota da 2ª prova e número de faltas. A seguir deve criar dois módulos:
 
 <ul>
-a) Um módulo para o cálculo da média: ((p1*4) + (p2*6))/10</li>li
+a) Um módulo para o cálculo da média: ((p1*4) + (p2*6))/10
 <br><br>
 b) Um módulo para o cálculo da situação do aluno que estará “Aprovado” se média >=6.0 e número de faltas<=16, caso contrário aluno “Reprovado”.
 <br><br>
