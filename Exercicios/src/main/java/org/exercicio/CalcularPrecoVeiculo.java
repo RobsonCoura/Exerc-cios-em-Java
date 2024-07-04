@@ -21,11 +21,28 @@ public class CalcularPrecoVeiculo {
 
     public static void main(String[] args) {
 
+        boolean modeloValido = false;
+        boolean marcaValida = false;
+
         try {
             // Ler os dados do veículo via JOptionPane e faz tratamento de exceções durante a execução do programa
             String modelo = JOptionPane.showInputDialog(null, "Digite o modelo do veículo:");
 
+            if (modelo != null && modelo.matches("[a-zA-Z]+")) {
+                modeloValido = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Entrada inválida. Por favor, digite apenas letras para o modelo do carro.");
+                System.exit(1); // Encerra o programa
+            }
+
             String marca = JOptionPane.showInputDialog(null, "Digite a marca do veículo:");
+
+            if (marca != null && marca.matches("[a-zA-Z]+")) {
+                marcaValida = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Entrada inválida. Por favor, digite apenas letras para o modelo do carro.");
+                System.exit(1); // Encerra o programa
+            }
 
             String custoFabricacaoStr = JOptionPane.showInputDialog(null, "Digite o custo de fabricação do veículo:");
 
@@ -35,7 +52,7 @@ public class CalcularPrecoVeiculo {
             // Converter para double
             double custoFabricacao = Double.parseDouble(custoFabricacaoStr);
 
-            // Calcular o preço de vendaa
+            // Calcular o preço de venda
             double precoVenda = calculaPrecoVenda(custoFabricacao);
 
             // Formatar o preço de venda para duas casas decimais, no formato "R$ X,XXX.XX", onde X são dígitos numéricos

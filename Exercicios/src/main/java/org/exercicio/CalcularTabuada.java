@@ -40,23 +40,25 @@ public class CalcularTabuada {
 
                 // Se a resposta for 's' ou 'S', pede ao usuário para digitar um valor inteiro
                 if (resposta == 's' || resposta == 'S') {
-                    JOptionPane.showMessageDialog(null, "Programa encerrado pelo usuário.");
-                    return;
-                }
-                // Se a resposta for 's' ou 'S', pede ao usuário para digitar um valor inteiro
-                String valorStr = JOptionPane.showInputDialog(null, "Digite um valor inteiro (maior que 1 e menor que 11):");
-                int valor = Integer.parseInt(valorStr);
+                    // Se a resposta for 's' ou 'S', pede ao usuário para digitar um valor inteiro
+                    String valorStr = JOptionPane.showInputDialog(null, "Digite um valor inteiro (maior que 1 e menor que 11):");
+                    int valor = Integer.parseInt(valorStr);
 
-                // Verifica se o valor está no intervalo permitido
-                if (valor > 1 && valor < 11) {
-                    // Chama o método para exibir a tabuada do valor fornecido
-                    exibirTabuada(valor);
-                } else {
-                    // Informa ao usuário que o valor está fora do intervalo permitido
-                    JOptionPane.showMessageDialog(null, "Valor fora do intervalo permitido. Tente novamente.");
+                    // Verifica se o valor está no intervalo permitido
+                    if (valor > 1 && valor < 11) {
+                        // Chama o método para exibir a tabuada do valor fornecido
+                        exibirTabuada(valor);
+                    } else {
+                        // Informa ao usuário que o valor está fora do intervalo permitido
+                        JOptionPane.showMessageDialog(null, "Valor fora do intervalo permitido. Tente novamente.");
+                    }
                 }
-            } catch (NullPointerException e) {
+
                 JOptionPane.showMessageDialog(null, "Programa encerrado pelo usuário.");
+                return;
+
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(null, "Programa cancelado pelo usuário.");
                 return;
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Valor inválido. Programa encerrado.");
