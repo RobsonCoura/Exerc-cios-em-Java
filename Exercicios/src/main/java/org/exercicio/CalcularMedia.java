@@ -36,11 +36,12 @@ public class CalcularMedia {
         while (true) {
             try {
                 // Entrada da nota da 1ª prova via JOptionPane e faz tratamento de exceções durante a execução do programa
-                String notaP1Str = JOptionPane.showInputDialog(null, "Digite a nota da 1ª prova (ou '1' para sair):");
+                String notaP1Str = JOptionPane.showInputDialog(null, "Digite a nota da 1ª prova (ou '-1' para sair):");
                 double notaP1 = Double.parseDouble(notaP1Str);
 
-                // Se a nota da 1ª prova for 1, o programa encerra o loop
-                if (notaP1 == 1) {
+                // Se a nota da 1ª prova for - 1, o programa encerra o loop
+                if (notaP1 == -1) {
+                    JOptionPane.showMessageDialog(null, "Programa encerrado pelo usuário.");
                     break;
                 }
                 // Ler as notas e faltas do aluno via JOptionPane
@@ -59,7 +60,7 @@ public class CalcularMedia {
                 // Exibição da média e da situação do aluno via JOptionPane
                 JOptionPane.showMessageDialog(null, String.format("Média: %.2f\nSituação: %s", media, situacao));
             } catch (NullPointerException e) {
-                JOptionPane.showMessageDialog(null, "Programa encerrado pelo usuário.");
+                JOptionPane.showMessageDialog(null, "Programa cancelado pelo usuário."); // Encerramento em caso usuario clicar no botao cancelar
                 break;
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Valor inválido. Digite novamente.");
