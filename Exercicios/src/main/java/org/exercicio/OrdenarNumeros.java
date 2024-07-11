@@ -23,8 +23,11 @@ public class OrdenarNumeros {
 
         // Algoritmo simples de ordenação (Bubble Sort)
         for (int i = 0; i < numeros.length - 1; i++) {
+            // A cada iteração do loop externo, o maior elemento não ordenado "bolha" para a sua posição correta
             for (int j = 0; j < numeros.length - 1 - i; j++) {
+                // Compara o elemento atual com o próximo elemento
                 if (numeros[j] > numeros[j + 1]) {
+                    // Se o elemento atual é maior que o próximo, troca os dois elementos
                     temp = numeros[j];
                     numeros[j] = numeros[j + 1];
                     numeros[j + 1] = temp;
